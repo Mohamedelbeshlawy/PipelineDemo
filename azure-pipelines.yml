@@ -45,7 +45,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: ls /var/log/tomcat/*
+    script: ls /opt/tomcat/*
 
         
 
