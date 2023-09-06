@@ -45,7 +45,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script:  curl -s https://azurenewapp.azurewebsites.net | grep "Web App Failed to Start" 
+    script: ls /var/log/tomcat/*
 
         
 
