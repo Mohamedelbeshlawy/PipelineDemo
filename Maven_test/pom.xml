@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.maven</groupId>
-  <artifactId>Maven_test</artifactId>
+  <artifactId>app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Maven_test Maven Webapp</name>
+  <name>app Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -27,7 +27,7 @@
   </dependencies>
 
   <build>
-    <finalName>Maven_test</finalName>
+    <finalName>app</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
