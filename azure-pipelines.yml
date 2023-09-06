@@ -24,17 +24,18 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**/*.war'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'warfile'
         publishLocation: 'Container'
 
-- task: AzureWebApp@1
+- task: AzureRmWebAppDeployment@4
   inputs:
     azureSubscription: 'Visual Studio Enterprise Subscription – MPN (86180291-45d5-4dda-8918-946b76cc206c)'
     appType: 'webAppLinux'
-    appName: 'AzureNewApp'
-    package: '**/*.war'
-    runtimeStack: 'TOMCAT|10-jre8'
+    WebAppName: 'AzureNewApp'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
+    RuntimeStack: 'TOMCAT|8.5-jre8'
+
