@@ -13,7 +13,7 @@ pool:
 steps:
 - task: Maven@3
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'Maven_test/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
@@ -24,19 +24,17 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**/*.war'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'warfile'
         publishLocation: 'Container'
-- task: AzureRmWebAppDeployment@4
+
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'AzureRM'
     azureSubscription: 'Visual Studio Enterprise Subscription – MPN (86180291-45d5-4dda-8918-946b76cc206c)'
     appType: 'webAppLinux'
-    WebAppName: 'AzureNewApp'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.war'
-    RuntimeStack: 'TOMCAT|8.5-jre8'
-        
-
+    appName: 'AzureNewApp'
+    package: '**/*.war'
+    runtimeStack: 'TOMCAT|10-jre8'
