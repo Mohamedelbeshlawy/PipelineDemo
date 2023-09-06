@@ -25,11 +25,15 @@ steps:
   inputs:
     Contents: '**/*.war'
     TargetFolder: '$(build.artifactstagingdirectory)'
+
 - task: PublishBuildArtifacts@1
   inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'warfile'
         publishLocation: 'Container'
+- task: CmdLine@2
+  inputs:
+    script: ls $(System.DefaultWorkingDirectory)/**/*.war
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
